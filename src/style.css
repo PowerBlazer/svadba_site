@@ -16,12 +16,12 @@ h1,h2,h3{
 body{
     background-color: white;
     margin: auto;
-    max-width: 550px;
+    max-width: 440px;
     padding-top: 40px;
 }
 
 .container{
-    padding: 0 30px;
+    padding: 0 25px;
 }
 
 header{
@@ -37,6 +37,7 @@ header{
 .header_body{
     display: flex;
     justify-content: space-between;
+    gap: 5px;
     position: relative;
 
     & .test-img{
@@ -44,6 +45,7 @@ header{
         height: 280px;
         background-color: #e6e6e676;
         filter: grayscale(1);
+        transform: scale(-1, 1);
         scale: 1.35;
         object-fit:cover;
         position: absolute;
@@ -51,7 +53,7 @@ header{
     }
 
     & .image-block{
-        width: 210px;
+        width: 200px;
         height: 280px;
         overflow: hidden;
         position: relative;
@@ -126,21 +128,24 @@ main{
     display: flex;
     flex-direction: column;
 
+    & .header_text{
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 30px;
+    }
+
+    & .black{
+        background-color: #212121;
+        color: white;
+    }
 
     & .dorogie_gosti_block{
-        background-color: #212121;
         width: 100%;
         display: flex;
         flex-direction: column;
         gap: 14px;
         color: white;
         padding: 35px 10px;
-
-        & .header_text{
-            text-align: center;
-            text-transform: uppercase;
-            font-size: 30px;
-        }
 
         & .inner_text{
             text-align: center;
@@ -156,13 +161,227 @@ main{
         align-items: center;
         gap: 14px;
         padding: 35px 10px;
+    }
 
-        & .header_text{
-            text-align: center;
-            text-transform: uppercase;
-            font-size: 30px;
+    & .programma_torjestva{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        padding: 35px 10px;
+
+        & .programma_list{
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            & li{
+                list-style: none;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 15px;
+                width: 100%;
+
+                & h3{
+                    font-size: 30px;
+                    min-width: 70px;
+                }
+
+                & .line{
+                    width: 30px;
+                    margin-top: 4px;
+                    min-height: 1px;
+                    background-color: black; 
+                }
+
+                & h4{
+                    font-size: 17px;
+                    margin: 0;
+                }
+            }
         }
     }
+
+    & .location{
+        width: 100%;
+        padding: 35px 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 45px;
+
+        & .header_block{
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
+
+            & .line{
+                height: 2px;
+                border-radius: 5px;
+                width: 90px;
+                background-color: white;
+            }
+        }
+
+        & .location_info{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+
+            & .image{
+                object-fit: cover;
+                object-position: center;
+                filter: brightness(80%);
+                border-radius: 2px;
+            }
+
+            & .location-info_inner{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                & .location-name{
+                    font-size: 17px;
+                    white-space: nowrap;
+                    font-weight: 500;
+                    letter-spacing: 1.5px;
+                    font-family: "Montserrat", sans-serif;
+                }
+
+                & .location-description{
+                    text-align: center;              
+                    font-weight: 300;
+                    font-size: 16px;
+                    font-family: "Montserrat", sans-serif;
+                }
+            }
+        }
+
+        & .navigate_map{
+            text-decoration: none;
+            color: white;
+            font-family: "Montserrat", sans-serif;
+            text-transform: uppercase;
+            margin: 5px 0;
+            padding: 17px 25px;
+            border: 1px white solid;
+            background-color: rgba(255, 255, 255, 0.084);
+
+            &:hover{
+                background-color: rgba(255, 255, 255, 0.174);
+            }
+        }
+    }
+
+    & .family{
+        padding: 35px 10px 15px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & .calendar_header{
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 20px;
+            font-family: 600;
+        }
+
+        & .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 26px);
+            gap: 5px;
+            text-align: center;
+            position: relative;
+
+            & .line{
+                position: absolute;
+                width: 99%;
+                left: 50%;
+                transform: translateX(-48%);
+                height: 1.8px;
+                top: 25px;
+                border-radius: 5px;
+                padding: 0;
+                background-color: black;
+            }
+
+            & .heart{
+                position: relative;
+
+                & span{
+                   position: absolute; 
+                   color: white;
+                   top: 4px;
+                   right: 10px;
+                   font-size: 13px;
+                   font-weight: 500;
+                   font-family: "Montserrat", sans-serif;
+                }
+            }
+
+            & .heart_icon{
+                margin-top: -5px;
+                margin-left: -4px;
+            }
+        }
+
+        & .calendar div {
+            padding: 5px;
+            font-weight: 600;
+            font-size: 13px;
+            width: 33px;
+            height: 19px;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        & .day-names {
+            font-weight: 500;
+            font-family: "Montserrat", sans-serif;
+            font-size: 13px;
+        }
+
+        & .date{
+            margin-top: 15px;
+            text-align: center;
+            font-size: 47px;
+            font-weight: 600;
+        }
+    }
+
+    & .family_image{
+        width: 100%;
+        height: 200px;
+        background-image: url('./img/f0c376abef3caf5c4bb5.jpg');
+        background-position: center;
+        background-size: cover;
+    }
+}
+
+
+@media(max-width:350px){
+
+    .header_body{
+        .test-img{
+            height: 250px;
+            width: 210px;
+        }
+    
+        .image-block{
+            height: 250px;
+        }
+
+    }
+    
 }
 
 
