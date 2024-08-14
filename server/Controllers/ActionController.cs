@@ -2,7 +2,7 @@
 
 namespace server.Controllers;
 
-[Route("action")]
+[Route("api/action")]
 [ApiController]
 public class ActionController: ControllerBase
 {
