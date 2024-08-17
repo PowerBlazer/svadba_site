@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Action = server.Models.Action;
 
 namespace server.Controllers;
 
@@ -6,14 +7,21 @@ namespace server.Controllers;
 [ApiController]
 public class ActionController: ControllerBase
 {
-    public ActionController()
+    private readonly ApplicationDbContext _dbContext;
+    public ActionController(ApplicationDbContext dbContext)
     {
-        
+        _dbContext = dbContext;
     }
 
     [HttpPost]
-    public async Task<IActionResult> SaveAction()
+    public async Task<IActionResult> SaveAction([FromBody]Action action)
     {
-        return Ok();
+        action.CreatedAt = DateTime.UtcNow;
+        
+        _dbContext.Actions.Add(action);
+        
+        await _dbContext.SaveChangesAsync();
+        
+        return Ok(action);
     }
 }

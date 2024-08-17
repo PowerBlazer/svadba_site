@@ -9,10 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Cormorant+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
 </head>
 <body>
-    <style>
-        * {
+<style>
+    * {
     box-sizing: border-box;
     font-family: "Cormorant SC", serif;
     font-weight: 400;
@@ -36,6 +37,7 @@ body {
 }
 
 .container {
+    position: relative;
     padding: 0 25px;
 }
 
@@ -383,7 +385,104 @@ main  .family_image{
     background-position: center;
     background-size: cover;
 }
-    </style>
+
+.notification_block{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.notification_elm{
+    min-width: 110px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: white;
+    box-shadow: 0px 0px 9px 3px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s;
+    overflow-y: hidden;
+}
+
+.notification_elm.active{
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.notification_text{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.confim_action_inner{
+   
+}
+
+.confim_action{
+    padding: 35px 10px;
+}
+
+.confim_action .header_text{
+    margin-bottom: 20px;
+}
+
+.confim_action .form_inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.confim_action .form_inner .text{
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 4px;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    border-radius: 3px;
+    width: 100%;
+}
+
+.confim_action .form_inner .text:focus{
+    outline: none;
+}
+
+.confim_action .radio_list{
+    margin: 10px 0;
+    width: 100%;
+}
+
+.confim_action .radio_button label{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.confim_action .confirm_action_button{
+    background-color: transparent;
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.084);
+    padding: 17px 28px;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    color: white;
+    font-size: 16px;
+    transition: all .3s;
+    margin-top: 5px;
+}
+
+.confim_action .confirm_action_button:hover{
+    background-color: rgba(255, 255, 255, 0.174);
+}
+</style>
     <header>
         <div class="container">
             <div class="header_inner">
@@ -530,8 +629,121 @@ main  .family_image{
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div class="programma_torjestva">
+                <div class="header_text">Дресс код</div>
+            </div>
+        </div>
+        <div class="confim_action_inner black">
+            <div class="container">
+                <div class="confim_action">
+                    <div class="header_text">Подвердите свое присутствие</div>
+
+                    <div class="form_inner">
+                        <input type="text" class="fullname_input text" id="fullname" placeholder="Ваше имя и фамилия"/>
+                        <input type="number" class="number_input text" id="number" placeholder="Ваш номер телефона"/>
+
+                        <div class="radio_list">
+                            <div class="radio_button">
+                                <input type="radio" id="action_visit" name="visit" value="1" checked/>
+                                <label for="action_visit">Я смогу прийти</label>
+                            </div>
+                            <div class="radio_button">
+                                <input type="radio" id="action_not_visit" name="visit" value="0"/>
+                                <label for="action_not_visit">Я не смогу прийти</label>
+                            </div>
+                        </div>
+
+                        <button class="confirm_action_button" onclick="onClickConfirmActionHandler()">
+                            Отправить
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </main>
-   
+    <div class="container">
+        <div class="notification_block">
+            <div class="notification_elm notification_success" id="notification_success">
+                <img src="./img/checked-success-svgrepo-com.svg" width="25" height="25" />
+                <div class="notification_text success">Успешно отправлено</div>
+            </div> 
+            <div class="notification_elm notification_error" id="notification_error">
+                <img src="./img/error-svgrepo-com.svg" width="25" height="25" />
+                <div class="notification_text error">Произошла ошибка</div>
+            </div>
+        </div>
+        
+    </div>
 </body>
+<script>
+
+
+    function onClickConfirmActionHandler(){
+        const fullNameInput = document.getElementById('fullname');
+        const numberInput = document.getElementById('number');
+        const selectedValue = document.querySelector("input[name=visit]:checked").value;
+
+        const newAction = {
+            phoneNumber: numberInput.value,
+            fullName: fullNameInput.value,
+            isVisit: selectedValue == 1
+        }
+
+        saveAction(newAction)
+    }
+
+    async function saveAction(action) {
+        const actionJson = JSON.stringify(action);
+
+        try {
+            const response = await fetch('api/action', {
+                method:'POST',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: actionJson
+            });
+
+            if(response.ok){
+                notification('success');
+            }
+            else {
+                notification('error');
+            }
+
+        } catch (error) {
+            notification('error');
+        }
+    }
+
+
+    function notification(status) {
+        const notificationSuccess = document.getElementById('notification_success');
+        const notificationError = document.getElementById('notification_error');
+
+        if(status === 'success'){
+            notificationSuccess.style.display = 'flex';
+            notificationError.style.display = 'none';
+            notificationSuccess.classList.remove('active');
+            notificationSuccess.classList.add('active');
+
+            setTimeout(() => {
+                notificationSuccess.classList.remove('active');
+            }, 1500)
+        }
+
+        if(status === 'error'){
+            notificationSuccess.style.display = 'none';
+            notificationError.style.display = 'flex';
+            notificationError.classList.remove('active');
+            notificationError.classList.add('active');
+
+            setTimeout(() => {
+                notificationError.classList.remove('active');
+            }, 1500)
+        }
+    }
+</script>
 </html>

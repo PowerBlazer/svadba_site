@@ -8,12 +8,15 @@ services:
     volumes:
       - ./src:/usr/share/nginx/html
       - ./ssl:/etc/nginx/ssl
+    networks:
+        - app_network
+  
 
   api:
     image: api
     build:
-      context: .
-      dockerfile: server/Dockerfile
+      context: ./server
+      dockerfile: Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=http://+:6001

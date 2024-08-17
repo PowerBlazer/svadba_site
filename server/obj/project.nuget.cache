@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "M6XR/DNZ+WZ4MW2f6UleGiMF3X+TfwxkXkHBJ0OCjFMG1PyP2Ha01Oa/NfJD3EZNHu7t6A9VzHeogiSTyUpXwA==",
+  "dgSpecHash": "Y0G3m42Fq5LHEOdDin51IM5LjADNYd5RLcHYlPBI0ZLUTxrQ8a6+e9Ek8cPZgAAqzNfR7IjQ6LNjaKiQVNNIMA==",
   "success": true,
   "projectFilePath": "C:\\GitRepositories\\svadba_site\\server\\server.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\power\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\power\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\8.0.0\\microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\power\\.nuget\\packages\\microsoft.extensions.caching.memory\\8.0.0\\microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
+    "C:\\Users\\power\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
     "C:\\Users\\power\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\power\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
     "C:\\Users\\power\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",

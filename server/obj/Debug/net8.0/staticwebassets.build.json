@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "XQ8kS1n5Xhh+QdIJxOJNWKW4GSXFYRPDiYOfUmwogEk=",
+  "Source": "server",
+  "BasePath": "_content/server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "server\\wwwroot",
+      "Source": "server",
+      "ContentRoot": "C:\\GitRepositories\\svadba_site\\server\\wwwroot\\",
+      "BasePath": "_content/server",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
