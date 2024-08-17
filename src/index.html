@@ -390,13 +390,14 @@ main  .family_image{
     position: fixed;
     bottom: 10px;
     right: 10px;
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 5px;
+
 }
 
 .notification_elm{
-    min-width: 110px;
+    min-width: 130px;
     border-radius: 5px;
     padding: 5px 10px;
     background-color: white;
@@ -420,7 +421,6 @@ main  .family_image{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
     font-size: 16px;
-    white-space: nowrap;
 }
 
 .confim_action_inner{
@@ -683,12 +683,28 @@ main  .family_image{
     </div>
 </body>
 <script>
-
+    let canClick = true;
 
     function onClickConfirmActionHandler(){
+        if (!canClick) {
+            notification('error' ,"Подождите еще 10 сек, чтобы снова отправить");
+            return;
+        }
+
+
         const fullNameInput = document.getElementById('fullname');
         const numberInput = document.getElementById('number');
         const selectedValue = document.querySelector("input[name=visit]:checked").value;
+
+        if(!fullNameInput.value || fullNameInput.value === '' || fullNameInput.valu.lenght === 0){
+            notification('error' ,"Заполните имя и фамилию");
+            return;
+        }
+
+        if(!numberInput.value || numberInput.value === '' || numberInput.value.lenght === 0){
+            notification('error' ,"Заполните имя и фамилию");
+            return;
+        }
 
         const newAction = {
             phoneNumber: numberInput.value,
@@ -696,7 +712,13 @@ main  .family_image{
             isVisit: selectedValue == 1
         }
 
-        saveAction(newAction)
+        saveAction(newAction);
+
+        canClick = false;
+
+        setTimeout(() => {
+            canClick = true;
+        }, 10000); // 10 seconds
     }
 
     async function saveAction(action) {
@@ -724,11 +746,19 @@ main  .family_image{
     }
 
 
-    function notification(status) {
+    function notification(status, text) {
         const notificationSuccess = document.getElementById('notification_success');
         const notificationError = document.getElementById('notification_error');
+        const notificationBlock = document.querySelector('.notification_block');
 
+
+        notificationBlock.style.display = 'flex';
         if(status === 'success'){
+            notificationSuccess.querySelector('.notification_text').innerText = text;
+            if(!text || text === '' || text.lenght === 0){
+                notificationSuccess.querySelector('.notification_text').innerText = 'Успешно отправлено'
+            }
+
             notificationSuccess.style.display = 'flex';
             notificationError.style.display = 'none';
             notificationSuccess.classList.remove('active');
@@ -740,6 +770,12 @@ main  .family_image{
         }
 
         if(status === 'error'){
+            notificationError.querySelector('.notification_text').innerText = text;
+
+            if(!text || text === '' || text.lenght === 0){
+                notificationError.querySelector('.notification_text').innerText = 'Произошла ошибка'
+            }
+
             notificationSuccess.style.display = 'none';
             notificationError.style.display = 'flex';
             notificationError.classList.remove('active');
@@ -749,6 +785,10 @@ main  .family_image{
                 notificationError.classList.remove('active');
             }, 1500)
         }
+
+        setTimeout(()=> {
+            notificationBlock.style.display = 'none';
+        }, 1700)
     }
 </script>
 </html>
