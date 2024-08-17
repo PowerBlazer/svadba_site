@@ -696,13 +696,13 @@ main  .family_image{
         const numberInput = document.getElementById('number');
         const selectedValue = document.querySelector("input[name=visit]:checked").value;
 
-        if(!fullNameInput.value || fullNameInput.value === '' || fullNameInput.valu.lenght === 0){
+        if(!fullNameInput.value || fullNameInput.value === '' || fullNameInput.value.lenght === 0){
             notification('error' ,"Заполните имя и фамилию");
             return;
         }
 
         if(!numberInput.value || numberInput.value === '' || numberInput.value.lenght === 0){
-            notification('error' ,"Заполните имя и фамилию");
+            notification('error' ,"Заполните номер телефона");
             return;
         }
 
