@@ -642,7 +642,7 @@ main  .family_image{
         <div class="confim_action_inner black">
             <div class="container">
                 <div class="confim_action">
-                    <div class="header_text">Подвердите свое присутствие</div>
+                    <div class="header_text">Подтвердите свое присутствие</div>
 
                     <div class="form_inner">
                         <input type="text" class="fullname_input text" id="fullname" placeholder="Ваше имя и фамилия"/>
@@ -697,7 +697,7 @@ main  .family_image{
         const selectedValue = document.querySelector("input[name=visit]:checked").value;
 
         if(!fullNameInput.value || fullNameInput.value === '' || fullNameInput.value.lenght === 0){
-            notification('error' ,"Заполните имя и фамилию");
+            notification('error' ,"Заполните поля имени и фамилии");
             return;
         }
 
