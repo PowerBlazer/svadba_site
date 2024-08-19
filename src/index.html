@@ -8,12 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Cormorant+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <style>
-    * {
+   * {
     box-sizing: border-box;
     font-family: "Cormorant SC", serif;
     font-weight: 400;
@@ -63,12 +63,12 @@ header {
     height: 280px;
     background-color: #e6e6e676;
     filter: grayscale(1);
-    -webkit-transform: scale(-1, 1); /* Префиксы для transform */
-    transform: scale(-1, 1);
+   
     scale: 1.35;
     object-fit: cover;
     position: absolute;
     top: 20px;
+    right: 5px;
 }
 
 .header_body .image-block {
@@ -270,11 +270,11 @@ main .location .location_info .location-info_inner {
 }
 
 main .location .location_info .location-info_inner .location-name {
-    font-size: 17px;
+    font-size: 20px;
     white-space: nowrap;
     font-weight: 500;
     letter-spacing: 1.5px;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Cormorant Unicase", serif;
 }
 
 main .location .location_info .location-info_inner .location-description {
@@ -390,14 +390,13 @@ main  .family_image{
     position: fixed;
     bottom: 10px;
     right: 10px;
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 5px;
-
 }
 
 .notification_elm{
-    min-width: 130px;
+    min-width: 110px;
     border-radius: 5px;
     padding: 5px 10px;
     background-color: white;
@@ -421,6 +420,7 @@ main  .family_image{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
     font-size: 16px;
+    white-space: nowrap;
 }
 
 .confim_action_inner{
@@ -439,7 +439,7 @@ main  .family_image{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 .confim_action .form_inner .text{
@@ -487,6 +487,39 @@ main  .family_image{
 .confim_action .confirm_action_button:hover{
     background-color: rgba(255, 255, 255, 0.174);
 }
+
+
+.confim_action .header_block {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.confim_action .header_block .line {
+    height: 2px;
+    border-radius: 5px;
+    width: 110px;
+    background-color: white;
+}
+
+.buffer_image{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    height: 250px;
+}
+
+.buffer_image img{
+    position: absolute;
+    width:440px;
+    height:340px;
+    object-fit: cover;
+    filter: grayscale(1);
+    bottom: 0px;
+}
 </style>
     <header>
         <div class="container">
@@ -522,7 +555,7 @@ main  .family_image{
                     <div class="header_text">Дорогие гости!</div>
                     <div class="inner_text">
                         Этот день для нас по особенному важен и мы хотим провести его в кругу наших близких людей.<br>
-                        Приглашаем вас на наше торжество - свадьбу.<br>
+                        Приглашаем вас на наше свадебное торжество !<br>
                     </div>
                 </div>
             </div>
@@ -564,47 +597,35 @@ main  .family_image{
             </div>
         </div>
         <div class="family_image"></div>
-        
-        <!-- <div class="my_stanem_semi_inner">
-            <div class="container">
-                <div class="my_stanem_semi">
-                    <div class="header_text">Мы станем семьей</div>
-                </div>
-            </div>
-        </div> -->
 
         <div class="programma_torjestva_inner">
             <div class="container">
                 <div class="programma_torjestva">
                     <div class="header_text">Программа торжества</div>
                     <ul class="programma_list">
+                        
                         <li class="programma_item">
-                            <h3 class="time">09:00</h3>
-                            <div class="line"></div>
-                            <h4 class="description">церемония никаха</h4>
-                        </li>
-                        <li class="programma_item">
-                            <h3 class="time">16:00</h3>
+                            <h3 class="time">16:30</h3>
                             <div class="line"></div>
                             <h4 class="description">сбор гостей</h4>
                         </li>
                         <li class="programma_item">
-                            <h3 class="time">16:30</h3>
+                            <h3 class="time">17:00</h3>
                             <div class="line"></div>
-                            <h4 class="description">банкет</h4>
+                            <h4 class="description">начало банкета</h4>
                         </li>
                         <li class="programma_item">
-                            <h3 class="time">20:00</h3>
+                            <h3 class="time">21:30</h3>
                             <div class="line"></div>
-                            <h4 class="description">торт</h4>
+                            <h4 class="description">праздничный торт</h4>
                         </li>
                         <li class="programma_item">
-                            <h3 class="time">21:00</h3>
+                            <h3 class="time">22:00</h3>
                             <div class="line"></div>
                             <h4 class="description">завершение торжества</h4>
                         </li>
                         <li class="programma_item">
-                            <h3 class="time">21:30</h3>
+                            <h3 class="time">22:10</h3>
                             <div class="line"></div>
                             <h4 class="description">фейрверк</h4>
                         </li>
@@ -621,7 +642,7 @@ main  .family_image{
                     </div>
                     <div class="location_info">
                         <div class="image-block">
-                            <img class="image" src="./img/fCINjWhF0Ts.jpg" width="170" height="260">
+                            <img class="image" src="./img/fCINjWhF0Ts.jpg" width="160" height="240">
                         </div>
                         <div class="location-info_inner">
                             <h3 class="location-name">Кафе "Крокус"</h3>
@@ -634,15 +655,17 @@ main  .family_image{
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="programma_torjestva">
-                <div class="header_text">Дресс код</div>
-            </div>
+        <div class="buffer_image">
+            <img src="./img/_ctg97hiG10.jpg" width="440" height="250">
         </div>
         <div class="confim_action_inner black">
             <div class="container">
                 <div class="confim_action">
-                    <div class="header_text">Подтвердите свое присутствие</div>
+                    <div class="header_block">
+                        <div class="header_text">Подтвердите свое присутствие</div>
+                        <div class="line"></div>
+                    </div>
+                    
 
                     <div class="form_inner">
                         <input type="text" class="fullname_input text" id="fullname" placeholder="Ваше имя и фамилия"/>
